@@ -121,20 +121,20 @@ minCursos.forEach((element)=>{
 
 let calculoDescuento=0;
 
-if(total>=2){
-    calculoDescuento=0.25;
+if(total===5){
+    calculoDescuento=0.40;
 } 
-else if(total >=4){
+else if(total === 4){
     calculoDescuento=0.35;
 }
-else if(total =5){
-    calculoDescuento=0.40;
+else if(total >= 2){
+    calculoDescuento=0.25;
 }
 
 document.write("Comprando esos " + total + " cursos se obtiene un descuento de =" + " " +  precioTotal*calculoDescuento)
 
 
-console.log("cantidad de cursos",total,"precio total de los cursos", precioTotal)
+console.log("cantidad de cursos",total,"precio total de los cursos", precioTotal,"Adquiriendo todos esos cursos se obtiene un descuento del calculo descuento = " + calculoDescuento*100 + "%")
 
 const minPrecios = minCursos.map(element =>{
     return element.precio;
