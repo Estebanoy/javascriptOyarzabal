@@ -119,9 +119,17 @@ minCursos.forEach((element)=>{
     document.write("Nombre del curso =" + " "  + element.nombre + "<br>"  + "Precio del curso =" + " " + element.precio + "<br>" + "Duracion del curso (Semanas) =" + " " + element.duracion + "<br>")
 })
 
+let calculoDescuento=0;
 
-
-let calculoDescuento = total*10/100; 
+if(total>=2){
+    calculoDescuento=0.25;
+} 
+else if(total >=4){
+    calculoDescuento=0.35;
+}
+else if(total =5){
+    calculoDescuento=0.40;
+}
 
 document.write("Comprando esos " + total + " cursos se obtiene un descuento de =" + " " +  precioTotal*calculoDescuento)
 
