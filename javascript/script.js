@@ -41,7 +41,7 @@ function compras(){
     }
    
 }
-console.log(compras()); **/
+console.log(compras()); 
 
 
 function curso(nombre,tiempo,precio){
@@ -87,9 +87,49 @@ for(const ref of cursos){
     console.log(cursos.indexOf(ref));
 }
 
-console.log(cursos);
+**/
+
+const cursos = [
+    {id: 1, nombre:"curso1", precio:15000, duracion:50},
+    {id: 2, nombre:"curso2", precio:20000, duracion:55},
+    {id: 3, nombre:"curso3", precio:25000, duracion:60},
+    {id: 4, nombre:"curso4", precio:30000, duracion:65},
+    {id: 5, nombre:"curso5", precio:35000, duracion:70},
+];
+console.log("Los precios de los cursos varian desde 15000 a 35000");
+console.log("La duracion de los cursos varian desde 50 semanas a 70 semanas")
+
+
+const precioMinimo = prompt("Filtre los cursos por precio ingresando un numero y le mostrara los cursos de eso precio o menores")
+
+cursos.forEach((element)=>{
+})
+
+const minCursos = cursos.filter(element =>{
+    return element.precio <= precioMinimo;
+})
+
+let total = 0;
+let precioTotal = 0;
+
+
+minCursos.forEach((element)=>{
+    precioTotal += element.precio;
+    total +=  1; 
+    document.write("Nombre del curso =" + " "  + element.nombre + "<br>"  + "Precio del curso =" + " " + element.precio + "<br>" + "Duracion del curso (Semanas) =" + " " + element.duracion + "<br>")
+})
 
 
 
+let calculoDescuento = total*10/100; 
+
+document.write("Comprando esos " + total + " cursos se obtiene un descuento de =" + " " +  precioTotal*calculoDescuento)
+
+
+console.log("cantidad de cursos",total,"precio total de los cursos", precioTotal)
+
+const minPrecios = minCursos.map(element =>{
+    return element.precio;
+})
 
 
