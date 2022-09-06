@@ -133,40 +133,48 @@ const minPrecios = minCursos.map(element =>{
 **/
 
 const cursos = [
-    {id: 1, nombre:"CURSO-1", precio:15000, duracion:50},
-    {id: 2, nombre:"CURSO-2", precio:20000, duracion:55},
-    {id: 3, nombre:"CURSO-3", precio:25000, duracion:60},
-    {id: 4, nombre:"CURSO-4", precio:30000, duracion:65},
-    {id: 5, nombre:"CURSO-5", precio:35000, duracion:70},
-    {id: 6, nombre:"CURSO-6", precio:40000, duracion:75},
+    {id: 1, nombre:"MIRAGE", precio:15000},
+    {id: 2, nombre:"OVERPASS", precio:26000},
+    {id: 3, nombre:"DUST-2", precio:20000},
+    {id: 4, nombre:"INFERNO", precio:20000},
+    {id: 5, nombre:"VERTIGO", precio:27000},
+    {id: 6, nombre:"TRAIN", precio:30000},
 ];
 
-const filtrado = prompt("Filtre los cursos mediante la cantidad de semanas, ingresando un numero solo obtendra cursos con esa cantidad de semanas o menos.(Los cursos van desde 50 semanas a 75)");
 
-const cursoNombre = prompt("Ingrese un nombre para crear nuevo curso");
+/*const cursoNombre = prompt("Ingrese un nombre para crear nuevo curso");
 const cursoPrecio = parseInt(prompt("Ingrese el precio de su nuevo curso"));
 const cursoDuracion = parseInt(prompt("Ingrese la cantidad de semanas que tendra su nuevo curso"));
 const idCurso = cursos.length+1;
 const nuevoCurso = {id:idCurso,nombre:cursoNombre,precio:cursoPrecio,duracion:cursoDuracion}
-cursos.push(nuevoCurso)
+cursos.push(nuevoCurso)*/
 console.log(cursos)
-
+let acumulador=0;
 for (const element of cursos) {
-    if(element.duracion <= filtrado){
-    let nuevosLi = document.createElement('div');
-    nuevosLi.innerHTML =
-    `
-    <h3>${element.nombre}</h3>
-    <ul>
-        <li>ID : ${element.id}</li>
-        <li>PRECIO : ${element.precio}</li>
-        <li>DURACION(SEMANAS) : ${element.duracion}</li>
-    </ul>
-    `;
-    document.body.appendChild(nuevosLi);
-}
+    respuesta = prompt("Desea comprar el curso para el mapa " + element.nombre + " a un precio de "+ element.precio + "$ ? . Responda 'Si' o 'No' y continue con los siguientes cursos");
+    if(respuesta === "Si" || respuesta === "si" || respuesta === "SI" || respuesta === "sI"){
+            acumulador = acumulador + element.precio;
+            let nuevosLi = document.createElement('div');
+            nuevosLi.innerHTML =
+            `
+            <ul>
+                <li>Nombre de Mapa : ${element.nombre}</li>
+                <li>PRECIO : ${element.precio} $</li>
+                <li>ID : ${element.id}</li>
+            </ul>
+            `;
+            document.body.appendChild(nuevosLi);
+            }
 }
 
+let precioFinal = document.createElement('h3');
+precioFinal.innerHTML =
+`
+<strong>La compra de todos esos curso seria un total de ${acumulador - acumulador*0.25} con un descuento del 25%<strong> 
+`;
+document.body.appendChild(precioFinal);
+
+/* 
 let ultimaCreacion = document.createElement('div');
 ultimaCreacion.innerHTML = 
 `
@@ -179,4 +187,4 @@ ultimaCreacion.innerHTML =
 
 `;
 ultimaCreacion.className = 'ultimoDiv';
-document.body.appendChild(ultimaCreacion);
+document.body.appendChild(ultimaCreacion);*/
