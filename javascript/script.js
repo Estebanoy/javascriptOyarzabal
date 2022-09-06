@@ -87,15 +87,6 @@ for(const ref of cursos){
     console.log(cursos.indexOf(ref));
 }
 
-**/
-
-const cursos = [
-    {id: 1, nombre:"curso1", precio:15000, duracion:50},
-    {id: 2, nombre:"curso2", precio:20000, duracion:55},
-    {id: 3, nombre:"curso3", precio:25000, duracion:60},
-    {id: 4, nombre:"curso4", precio:30000, duracion:65},
-    {id: 5, nombre:"curso5", precio:35000, duracion:70},
-];
 console.log("Los precios de los cursos varian desde 15000 a 35000");
 console.log("La duracion de los cursos varian desde 50 semanas a 70 semanas")
 
@@ -139,5 +130,53 @@ console.log("cantidad de cursos",total,"precio total de los cursos", precioTotal
 const minPrecios = minCursos.map(element =>{
     return element.precio;
 })
+**/
 
+const cursos = [
+    {id: 1, nombre:"CURSO-1", precio:15000, duracion:50},
+    {id: 2, nombre:"CURSO-2", precio:20000, duracion:55},
+    {id: 3, nombre:"CURSO-3", precio:25000, duracion:60},
+    {id: 4, nombre:"CURSO-4", precio:30000, duracion:65},
+    {id: 5, nombre:"CURSO-5", precio:35000, duracion:70},
+    {id: 6, nombre:"CURSO-6", precio:40000, duracion:75},
+];
 
+const filtrado = prompt("Filtre los cursos mediante la cantidad de semanas, ingresando un numero solo obtendra cursos con esa cantidad de semanas o menos.(Los cursos van desde 50 semanas a 75)");
+
+const cursoNombre = prompt("Ingrese un nombre para crear nuevo curso");
+const cursoPrecio = parseInt(prompt("Ingrese el precio de su nuevo curso"));
+const cursoDuracion = parseInt(prompt("Ingrese la cantidad de semanas que tendra su nuevo curso"));
+const idCurso = cursos.length+1;
+const nuevoCurso = {id:idCurso,nombre:cursoNombre,precio:cursoPrecio,duracion:cursoDuracion}
+cursos.push(nuevoCurso)
+console.log(cursos)
+
+for (const element of cursos) {
+    if(element.duracion <= filtrado){
+    let nuevosLi = document.createElement('div');
+    nuevosLi.innerHTML =
+    `
+    <h3>${element.nombre}</h3>
+    <ul>
+        <li>ID : ${element.id}</li>
+        <li>PRECIO : ${element.precio}</li>
+        <li>DURACION(SEMANAS) : ${element.duracion}</li>
+    </ul>
+    `;
+    document.body.appendChild(nuevosLi);
+}
+}
+
+let ultimaCreacion = document.createElement('div');
+ultimaCreacion.innerHTML = 
+`
+<h3>ULTIMO CURSO CREADO : ${nuevoCurso.nombre}</h3>
+    <ul>
+        <li>ID : ${nuevoCurso.id}</li>
+        <li>PRECIO : ${nuevoCurso.precio}</li>
+        <li>DURACION(SEMANAS) : ${nuevoCurso.duracion}</li>
+    </ul>
+
+`;
+ultimaCreacion.className = 'ultimoDiv';
+document.body.appendChild(ultimaCreacion);

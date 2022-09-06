@@ -9,3 +9,30 @@ h1{
 h2{
     margin-bottom: 5vh;
 }
+
+h3{
+    margin-bottom: 8px;
+}
+
+li{
+    list-style: none;
+}
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10rem;
+}
+
+div{
+    border: 2px solid black;
+    box-shadow: 4px 5px 10px -2px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.ultimoDiv{
+    border: 2px red solid;
+}
