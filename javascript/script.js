@@ -132,14 +132,7 @@ const minPrecios = minCursos.map(element =>{
 })
 **/
 
-const cursos = [
-    {id: 1, nombre:"MIRAGE", precio:15000},
-    {id: 2, nombre:"OVERPASS", precio:26000},
-    {id: 3, nombre:"DUST-2", precio:20000},
-    {id: 4, nombre:"INFERNO", precio:20000},
-    {id: 5, nombre:"VERTIGO", precio:27000},
-    {id: 6, nombre:"TRAIN", precio:30000},
-];
+
 
 
 /*const cursoNombre = prompt("Ingrese un nombre para crear nuevo curso");
@@ -147,7 +140,7 @@ const cursoPrecio = parseInt(prompt("Ingrese el precio de su nuevo curso"));
 const cursoDuracion = parseInt(prompt("Ingrese la cantidad de semanas que tendra su nuevo curso"));
 const idCurso = cursos.length+1;
 const nuevoCurso = {id:idCurso,nombre:cursoNombre,precio:cursoPrecio,duracion:cursoDuracion}
-cursos.push(nuevoCurso)*/
+cursos.push(nuevoCurso)
 console.log(cursos)
 let acumulador=0;
 for (const element of cursos) {
@@ -188,3 +181,69 @@ ultimaCreacion.innerHTML =
 `;
 ultimaCreacion.className = 'ultimoDiv';
 document.body.appendChild(ultimaCreacion);*/
+
+const cursos = [
+    {id: 1, nombre:"mirage", precio:15000},
+    {id: 2, nombre:"overpass", precio:26000},
+    {id: 3, nombre:"dust-2", precio:20000},
+    {id: 4, nombre:"inferno", precio:20000},
+    {id: 5, nombre:"vertigo", precio:27000},
+    {id: 6, nombre:"train", precio:30000},
+];
+
+const btnBuscar = document.getElementById('btnBuscar');
+const input = document.getElementById('ingreso');
+const section = document.getElementById('seccion1');
+
+let contador = 0;
+let contenidoH2 = document.querySelector("#contador");
+function cambio(num){ 
+    contador += num;
+    contenidoH2.innerText = contador;   
+    }
+    sumar.addEventListener('click',()=>{
+    cambio(+1)})
+        
+    restar.addEventListener('click',()=>{
+    cambio(-1)})
+
+    const cursos2 = []    
+
+    function filtrarCursosNombres(filtrar){
+        const filtrador = cursos.filter((element) =>{
+
+            if(element.nombre.includes(filtrar)){
+            cursos2.unshift(element); 
+            let nuevosDivs = document.createElement('div');
+                nuevosDivs.innerHTML =
+                `
+                <ul>
+                    <li>Nombre de Mapa : ${element.nombre}</li>
+                    <li>PRECIO : ${element.precio} $</li>
+                    <li>ID : ${element.id}</li>
+                    <button class="btnComprar" id="btnComprar" onclick="comprar()">Comprar</button>
+                </ul>
+                `
+                section.appendChild(nuevosDivs);
+            }
+            
+        })
+        
+        return filtrador;
+    }
+    
+
+    btnBuscar.addEventListener("click",()=>{
+        section.innerHTML = ``
+        filtrarCursosNombres(input.value.toLowerCase())
+        if(input.value == ""){
+            section.innerHTML = ``
+        }
+        });
+        
+       function comprar(){
+            console.log("Usted compro el curso del mapa " + cursos2[0].nombre)
+       }
+    
+
+    
