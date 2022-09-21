@@ -185,19 +185,138 @@ document.body.appendChild(ultimaCreacion);*/
 const cursos = [
     {id: 1, nombre:"mirage", precio:15000},
     {id: 2, nombre:"overpass", precio:26000},
-    {id: 3, nombre:"dust-2", precio:20000},
+    {id: 3, nombre:"dust2", precio:20000},
     {id: 4, nombre:"inferno", precio:20000},
     {id: 5, nombre:"vertigo", precio:27000},
     {id: 6, nombre:"train", precio:30000},
+    {id: 7, nombre:"nuke", precio:28000},
+    {id: 8, nombre:"ancient", precio:32000},
 ];
+
+
 
 const btnBuscar = document.getElementById('btnBuscar');
 const input = document.getElementById('ingreso');
 const section = document.getElementById('seccion1');
+const carrito = [];
+const carritoContenedor = document.getElementById("seccion2");
 
+function mostrarTodo(){
+    section.innerHTML="";
+    cursos.forEach(element =>{
+    let nuevosDivs = document.createElement('div');
+                nuevosDivs.innerHTML =
+                `
+                <img src="./img/${element.nombre}.jpg" alt="">
+                <ul>
+                    <li>Nombre de mapa : ${element.nombre}</li>
+                    <li>Precio : ${element.precio} $</li>
+                    <button class="btnComprar" id="btnComprar${element.id}">Sumar al carrito
+                    </button>
+                </ul>
+                `
+                section.appendChild(nuevosDivs);
+
+                const botonProducto = document.getElementById(`btnComprar${element.id}`)
+
+                botonProducto.addEventListener('click', ()=>{
+                    sumarAlCarrito(element.id)
+                    actCarrito();
+                })
+                
+});}
+
+function filtrarCursosNombres(filtrar){
+    section.innerHTML="";
+    const filtrador = cursos.filter((element) =>{
+        if(element.nombre.includes(filtrar)){ 
+        let nuevosDivs = document.createElement('div');
+        nuevosDivs.innerHTML =
+        `
+        <img src="./img/${element.nombre}.jpg" alt="">
+        <ul id="numeroCurso${element.id}">
+            <li>Nombre de mapa : ${element.nombre}</li>
+            <li>Precio : ${element.precio} $</li>
+            <button class="btnComprar" id="btnComprar${element.id}">Sumar al carrito
+            </button>
+        </ul>
+        `
+        section.appendChild(nuevosDivs);
+
+        const botonProducto = document.getElementById(`btnComprar${element.id}`)
+
+        botonProducto.addEventListener('click', ()=>{
+            sumarAlCarrito(element.id)
+            actCarrito();
+        })
+        }
+        
+    })
+    
+    return filtrador;
+}
+
+mostrarTodo();
+console.log(carrito)
+
+
+
+const sumarAlCarrito = (idProducto) =>{
+    const item = cursos.find((element) => element.id === idProducto)
+    carrito.push(item)
+    console.log(carrito)
+    actCarrito();
+}
+
+const eliminarProducto = (idProducto) =>{
+    const itemBorrado = carrito.find((element) => element.id === idProducto)
+    const indice = carrito.indexOf(itemBorrado);
+    carrito.splice(indice,1);
+    console.log(carrito)
+    actCarrito();   
+     
+}
+
+const comprarTodo = document.createElement('button')
+comprarTodo.innerText = "COMPRAR"
+const listaCarro = document.getElementById("listaCarro")
+
+
+const actCarrito = () =>{
+    const totalCarrito = carrito.reduce((acc,producto) => acc + producto.precio,0)   
+    listaCarro.innerHTML="";
+    listaCarro.innerText=`CARRITO - PRECIO TOTAL =  ${totalCarrito} $ `
+    listaCarro.appendChild(comprarTodo);
+    carrito.forEach((element)=>{
+        const nuevosItems = document.createElement("li")
+        nuevosItems.innerHTML= `Nombre de curso :   ${element.nombre}.     Precio :   ${element.precio}$     <button id=btnBorrar onclick='eliminarProducto(${element.id})'>Eliminar</button>`
+        listaCarro.appendChild(nuevosItems)
+        
+    })
+}
+
+comprarTodo.addEventListener('click', () =>{
+    localStorage.setItem("Carrito", JSON.stringify(carrito));
+    const totalCarrito = carrito.reduce((acc,producto) => acc + producto.precio,0)
+    section.innerHTML = ""
+    const compraFinalizada = document.createElement('ul')
+    compraFinalizada.className = "resumenCompra"
+    compraFinalizada.innerHTML = `
+    <li>Usted realizo la compra de ${carrito.length} cursos </li>
+    <li>Monto a pagar = ${totalCarrito} $</li>
+    <li>Cursos = ${(carrito.map((element)=>{return "'" + element.nombre + "' "}))} </li>
+    <li>Presione en 'ver todos los cursos' para seguir comprando.</li>
+    `
+    section.appendChild(compraFinalizada)
+    carrito.length = 0;
+    listaCarro.innerHTML = "";
+})
+
+
+const btnMostrar = document.getElementById("btnMostrarTodo");
 let contador = 0;
 let contenidoH2 = document.querySelector("#contador");
-function cambio(num){ 
+/*function cambio(num){ 
     contador += num;
     contenidoH2.innerText = contador;   
     }
@@ -205,45 +324,19 @@ function cambio(num){
     cambio(+1)})
         
     restar.addEventListener('click',()=>{
-    cambio(-1)})
+    cambio(-1)})*/
+   
 
-    const cursos2 = []    
-
-    function filtrarCursosNombres(filtrar){
-        const filtrador = cursos.filter((element) =>{
-
-            if(element.nombre.includes(filtrar)){
-            cursos2.unshift(element); 
-            let nuevosDivs = document.createElement('div');
-                nuevosDivs.innerHTML =
-                `
-                <ul>
-                    <li>Nombre de Mapa : ${element.nombre}</li>
-                    <li>PRECIO : ${element.precio} $</li>
-                    <li>ID : ${element.id}</li>
-                    <button class="btnComprar" id="btnComprar" onclick="comprar()">Comprar</button>
-                </ul>
-                `
-                section.appendChild(nuevosDivs);
-            }
-            
-        })
-        
-        return filtrador;
-    }
+    
     
 
     btnBuscar.addEventListener("click",()=>{
         section.innerHTML = ``
         filtrarCursosNombres(input.value.toLowerCase())
-        if(input.value == ""){
-            section.innerHTML = ``
-        }
+        
         });
         
-       function comprar(){
-            console.log("Usted compro el curso del mapa " + cursos2[0].nombre)
-       }
+       
     
 
     

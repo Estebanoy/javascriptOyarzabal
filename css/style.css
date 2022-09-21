@@ -3,6 +3,7 @@
     margin: 0%;
     text-align: center;
 }
+
 h1{
     margin: 5vh;
 }
@@ -18,15 +19,38 @@ li{
     list-style: none;
 }
 body{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Russo One', sans-serif;
     font-size: 1.4rem;
+    background-image: url(../img/coolbackground.png);
+    color: #404467;
 }
 
 div{
-    border: 2px solid black;
-    box-shadow: 4px 5px 10px -2px;
+    box-shadow: 0px 0px 12px 1px;
+    border-radius: 14px;
+    background-color: #fffaac96;
+    border: 2px solid #5c627a;
+    transition: all ease 1s;
+}
+div:hover{
+    transform: scale(1.2);
+}
+div ul{
     padding: 10px;
-    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div ul li{
+    padding: 2px;
+}
+
+
+
+div img{
+    width: 22rem;
+    border-radius: 10px;
 }
 
 .ultimoDiv{
@@ -39,9 +63,64 @@ article{
 
 #seccion1{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    align-items: stretch;
-    margin: 1rem;
+    align-items: center;
+    margin: 2rem;
+    justify-content: center;
+    gap: 4rem;
+}
+
+#seccion2{
+    display: flex;
+    justify-content: center;
+}
+
+#seccion2 #listaCarro li{
+    padding: 10px;
+}
+
+.carrito{
+    padding: 10px;
+    border: 2px solid;
+}
+
+button{
+    padding: 0.25rem;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.2rem;
+    color: #fffaac;
+    border-radius: 5px;
+    border: 1px black solid;
+    background-color: #404467;
+}
+
+button:hover{
+    cursor: pointer;
+    color: #404467;
+    background-color:#fffaac;
+}
+
+header nav ul{
+    background-color: #fffaac;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+    align-content: center;
+    color: #5c627a;
+    padding: 0.5rem;
+    border-bottom: 4px solid #5c627a;
+    font-style: italic;
+}
+
+
+a{
+    text-decoration: none;
+    color: #5c627a;
+}
+
+.resumenCompra li{
+    padding: 8px;
 }

@@ -5,27 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Russo+One&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <h1>Compra hoy tus cursos!</h1>
+        <nav class="navbar">
+            <ul>
+                <a href=""><li>Nosotros</a></li>
+                <a href=""><li>Ejemplos</a></li>
+                <a href=""><li>Ayuda</a></li>
+                <a href=""><li>Contacto</a></li>
+                <a href="#seccion2"><li>Carrito</a></li>
+
+        </nav>
     </header>
     <main>
+        <h1>Compra hoy tus cursos!</h1>
         <article>
-            <h2 id="contador">0</h2>
-            <button id="sumar">+</button>
-            <button id="restar">-</button>
-        </article>
-        <article>
-           
                 <label for="ingreso">Filtrar por nombre</label>
                 <input type="text" value="" name="ingreso" id="ingreso">
-                <button id="btnBuscar">BUSCAR</button>
+                <button id="btnBuscar">Buscar</button>
+                <button id="btnMostrarTodo" onclick="mostrarTodo()">Ver todos los cursos</button>
             
         </article>
+        
         <section id="seccion1">
 
+        </section>
+        <section id="seccion2">
+            <ul id="listaCarro">
+
+            </ul>
         </section>
     </main>
 
