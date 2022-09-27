@@ -316,27 +316,14 @@ comprarTodo.addEventListener('click', () =>{
 const btnMostrar = document.getElementById("btnMostrarTodo");
 let contador = 0;
 let contenidoH2 = document.querySelector("#contador");
-/*function cambio(num){ 
-    contador += num;
-    contenidoH2.innerText = contador;   
-    }
-    sumar.addEventListener('click',()=>{
-    cambio(+1)})
-        
-    restar.addEventListener('click',()=>{
-    cambio(-1)})*/
-   
 
-    
-    
-
+    const articulo = document.getElementsByTagName("article")
     btnBuscar.addEventListener("click",()=>{
-        section.innerHTML = ``
-        filtrarCursosNombres(input.value.toLowerCase())
-        
+        const datosBuscados = (input.value.length === 0) ? true : false ;
+        datosBuscados ? alert("Ingrese datos validos") : filtrarCursosNombres(input.value.toLowerCase())
         });
         
-       
-    
+        
 
-    
+
+
