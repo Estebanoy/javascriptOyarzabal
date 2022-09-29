@@ -25,30 +25,30 @@ body{
     color: #404467;
 }
 
-div{
+.divCards{
     box-shadow: 0px 0px 12px 1px;
     border-radius: 14px;
     background-color: #fffaac96;
     border: 2px solid #5c627a;
     transition: all ease 1s;
 }
-div:hover{
+.divCards:hover{
     transform: scale(1.2);
 }
-div ul{
+.divCards ul{
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-div ul li{
+.divCards ul li{
     padding: 2px;
 }
 
 
 
-div img{
+.divCards img{
     width: 22rem;
     border-radius: 10px;
 }

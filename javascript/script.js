@@ -205,6 +205,7 @@ function mostrarTodo(){
     section.innerHTML="";
     cursos.forEach(element =>{
     let nuevosDivs = document.createElement('div');
+    nuevosDivs.className = "divCards";
                 nuevosDivs.innerHTML =
                 `
                 <img src="./img/${element.nombre}.jpg" alt="">
@@ -320,8 +321,9 @@ let contenidoH2 = document.querySelector("#contador");
     const articulo = document.getElementsByTagName("article")
     btnBuscar.addEventListener("click",()=>{
         const datosBuscados = (input.value.length === 0) ? true : false ;
-        datosBuscados ? alert("Ingrese datos validos") : filtrarCursosNombres(input.value.toLowerCase())
+        datosBuscados ? swal({title: 'Error',width:'200',height:'200',text:'Ingrese algun dato para poder buscar',icon:'error',button:':('}) : filtrarCursosNombres(input.value.toLowerCase())
         });
+        
         
         
 
