@@ -124,3 +124,36 @@ a{
 .resumenCompra li{
     padding: 8px;
 }
+
+#artCarrito{
+    display: flex;
+    justify-content: center;   
+
+}
+.cards img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#contenedorCarrito{
+    box-shadow: 0px 1px 11px 4px;
+    border: 2px solid;
+}
+
+#contenedorCarrito li{
+    list-style: none;
+    border: 1px solid;
+    padding: 9px;
+}
+
+#listaTutores{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#listaTutores li{
+    padding: 12px;
+}

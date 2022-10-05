@@ -27,6 +27,7 @@ const nombresCursos = carritoGuardado.forEach(element => {
               })
               .then((willDelete) => {
                 if (willDelete) {
+                    subtitulo.innerText = "";
                     const eliminados = carritoGuardado.splice(carritoGuardado.indexOf(element),1)
                     panelCarrito.removeChild(liCarro)
                     console.log(eliminados)

@@ -182,6 +182,10 @@ ultimaCreacion.innerHTML =
 ultimaCreacion.className = 'ultimoDiv';
 document.body.appendChild(ultimaCreacion);*/
 
+
+
+  
+  
 const cursos = [
     {id: 1, nombre:"mirage", precio:15000},
     {id: 2, nombre:"overpass", precio:26000},
@@ -221,6 +225,13 @@ function mostrarTodo(){
                 const botonProducto = document.getElementById(`btnComprar${element.id}`)
 
                 botonProducto.addEventListener('click', ()=>{
+                    Toastify({
+                        text:"Acaba de comprar el curso de " + element.nombre,
+                        duration: 3000,
+                        style: {
+                            background: "linear-gradient(to right, #404467, rgb(216 219 13))",
+                          },
+                    }).showToast();
                     sumarAlCarrito(element.id)
                     actCarrito();
                 })
@@ -232,6 +243,7 @@ function filtrarCursosNombres(filtrar){
     const filtrador = cursos.filter((element) =>{
         if(element.nombre.includes(filtrar)){ 
         let nuevosDivs = document.createElement('div');
+        nuevosDivs.className = "divCards";
         nuevosDivs.innerHTML =
         `
         <img src="./img/${element.nombre}.jpg" alt="">
@@ -247,6 +259,13 @@ function filtrarCursosNombres(filtrar){
         const botonProducto = document.getElementById(`btnComprar${element.id}`)
 
         botonProducto.addEventListener('click', ()=>{
+            Toastify({
+                        text:"Acaba de comprar el curso de " + element.nombre,
+                        duration: 3000,
+                        style: {
+                    background: "linear-gradient(to right, #404467, rgb(213 196 0))",
+                          },
+                    }).showToast();
             sumarAlCarrito(element.id)
             actCarrito();
         })
@@ -325,7 +344,39 @@ let contenidoH2 = document.querySelector("#contador");
         });
         
         
-        
 
+        
+        const cargarDatos = () =>{
+            return new Promise((resolve, rejected)=>{
+                setTimeout(()=>{
+                    resolve(cursos)
+                },3000)
+            })
+        }
+
+        const renderizarDatos = (array)=>{
+            array.forEach(element => {
+                let contenedorRender = document.getElementById('carroRender')
+                let cards = document.createElement('div');
+                cards.className = "cards"
+                cards.innerHTML =
+                `
+                <img src="./img/${element.nombre}.jpg" alt="">
+                <ul id="numeroCurso${element.id}">
+                    <li>Nombre de mapa : ${element.nombre}</li>
+                    <li>Precio : ${element.precio} $</li>
+                </ul>
+                `
+                contenedorRender.appendChild(cards);
+            });
+        }
+
+        let productos = [];
+        
+        cargarDatos()
+            .then((res)=>{
+                productos = res;
+                renderizarDatos(productos)
+            })
 
 
