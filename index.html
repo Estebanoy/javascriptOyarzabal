@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Adquiere los mejores cursos | Inicia las guias de expertos</title>
     
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <ul>
-                <a href=""><li>Inicio</a></li>
+        <nav>
+            <ul id="nav">
+                <a href=""><li id="inicio">Inicio</a></li>
                 <a href="./pages/nosotros.html"><li>Nosotros</a></li>
-                <a href=""><li>Ejemplos</a></li>
-                <a href="./pages/compras.html"><li>Compras</a></li>
-                <a href=""><li>Ayuda</a></li>
-
+                <a href="#"><li id="ejemplos">Ejemplos</a></li>
+                <a href="./pages/compras.html"><li>Compras</a></li>    
         </nav>
     </header>
-    <main>
+    <main id="main">
+      <div>
+      <button id="botonTuCarrito" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tu carrito</button>
+      </div>
         <h1>Compra hoy tus cursos!</h1>
         <article>
                 <label for="ingreso">Filtrar por nombre</label>
@@ -37,14 +39,26 @@
         <section id="seccion1">
 
         </section>
-        <section id="seccion2">
-            <ul id="listaCarro">
-
-            </ul>
+        <section class="container">
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Tu carrito</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="seccion2" class="modal-body">
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </section>
-        <section id="carroRender">
-
-        </section>
+        
+        
     </main>
 
     
@@ -53,5 +67,6 @@
     <script src="./javascript/script.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

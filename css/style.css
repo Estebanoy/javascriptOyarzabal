@@ -26,11 +26,15 @@ body{
 }
 
 .divCards{
+    font-size: 2rem;
+    text-shadow: 1px 2px #fffaac;
     box-shadow: 0px 0px 12px 1px;
     border-radius: 14px;
     background-color: #fffaac96;
     border: 2px solid #5c627a;
     transition: all ease 1s;
+    font-family: 'Russo One', sans-serif;
+    overflow: hidden;
 }
 .divCards:hover{
     transform: scale(1.2);
@@ -51,6 +55,7 @@ body{
 .divCards img{
     width: 22rem;
     border-radius: 10px;
+    opacity: 0.75;
 }
 
 .ultimoDiv{
@@ -75,6 +80,8 @@ article{
 #seccion2{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 #seccion2 #listaCarro li{
@@ -157,3 +164,40 @@ a{
 #listaTutores li{
     padding: 12px;
 }
+
+#nav a:hover{
+    color: #404467;
+}
+
+#botonTuCarrito{
+    background-color: #404467;
+    border: 1px solid black;
+}
+
+#seccionesEjemplos{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5rem;
+}
+#seccionTextos{
+    display: flex;
+    width: 40vw;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#seccionImagen img{
+    width: 40vw;
+    object-fit: cover;
+    box-shadow: 1px 3px 16px 3px;
+}
+
+@media only screen and (max-width: 700px) {
+    #seccionesEjemplos{
+        flex-direction: column;
+        align-items: center;
+       
+    }
+    #seccionImagen img{
+        width: 80vw;}
+    }
